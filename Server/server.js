@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 
 // import URL data model 
-
+const URL=require('./models/URLs');
 
 // initializing express
 const app=express();
@@ -21,10 +21,33 @@ mongoose.connect(db)
     .then(()=> console.log('mongoDB connected sucessfully'))
     .catch((err)=> console.log(err));
 
+
+// Routes
+const shorten=require('./Routes/API/shorten');
+app.use('/API/shorten',shorten);
+
+const redirect=require('./Routes/API/redirect');
+app.use('/API/redirect',redirect);
+
+// redirection function after getting the shortened URL
+app.get('/:hash',(req,res)=>{
+    const id=req.params.hash;
+    // we search it in database
+    URL.findOne({_id:id},(err,doc)=>{
+        if(doc){
+            res.redirect('http://'+doc.URL);
+        }else{
+            res.status(400).json({error:'this URL is not correct'});
+        }
+    })
+});
+
 // path to test the server 
 app.get('/',(req,res)=>{
     res.send('response from server');
 });
+
+
 
 //initializing server port 
 const port=process.env.PORT || 5000;

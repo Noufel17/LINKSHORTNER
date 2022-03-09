@@ -13,11 +13,13 @@ const urlSchema =new Schema({
     },
     hash:{
         type:String,
-        required:true
     },
     date:{
         type:Date,
         default:Date.now
+    },
+    urlOwner:{
+        type:String,
     }
 });
 //now we export the data model (the Schema)
