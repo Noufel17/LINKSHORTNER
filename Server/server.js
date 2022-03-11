@@ -29,13 +29,16 @@ app.use('/API/shorten',shorten);
 const redirect=require('./Routes/API/redirect');
 app.use('/API/redirect',redirect);
 
+const getData=require('./Routes/API/getData');
+app.use('/API/getData',getData);
+
 // redirection function after getting the shortened URL
 app.get('/:hash',(req,res)=>{
     const id=req.params.hash;
     // we search it in database
     URL.findOne({_id:id},(err,doc)=>{
         if(doc){
-            res.redirect('http://'+doc.URL);
+            res.redirect(doc.URL);
         }else{
             res.status(400).json({error:'this URL is not correct'});
         }

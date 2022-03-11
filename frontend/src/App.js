@@ -1,9 +1,8 @@
-import './App.css';
-import Homepage from './components/Homepage';
+import URLform from './components/URLform';
 function App() {
   return (
-    <div className="App">
-      <Homepage />
+    <div className="flex justify-center content-center">
+      <URLform />
     </div>
   );
 }
