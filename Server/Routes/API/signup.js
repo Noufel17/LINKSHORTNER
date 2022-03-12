@@ -11,10 +11,16 @@ router.use((req,res,next) => {
     res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+// how it works logically :
 // the user enters name and password 
-// we give the user an id
+// the user clicks sign up
 // we get the name and password from front end by axios post request
-//check if the rquest is here by postman
+// we give the user an id
+// we save the user in data base 
+// still to do : we redirect the user to sign in page so he can sign in to his account
+
+
+//check if the request is here by postman
 router.post('/',(req,res)=> {
     // to confirm that we got the request we print it on the console
     console.log('body: '+req.body);

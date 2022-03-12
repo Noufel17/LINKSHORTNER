@@ -9,10 +9,9 @@ function URLform() {
   const [links, setlinks] = useState([]);
 
   // get all URLs already in database 
-  //returns null :(
   // need to do it one time i used usEffect
   useEffect(()=>{
-  axios.get('http://localhost:5000/API/getData')
+  axios.get('http://localhost:5000/API/getData') // we have to send username here to filter by it
     .then(res=>{
       console.log(res.data);
       const userURLs=res.data;
@@ -23,7 +22,7 @@ function URLform() {
   })
 },[])
 
-
+// still need to enplement a button to delete every link in shown list 
   //event handlers
   const handleChange=(e)=>{
     e.preventDefault();
@@ -37,7 +36,7 @@ function URLform() {
       alert('please enter a valid url with http(s) protocol');
     }else{
       console.log('url is : '+url)
-      axios.post('http://localhost:5000/API/shorten',{url:url})
+      axios.post('http://localhost:5000/API/shorten',{url:url}) // we have to post username too here
       .then(res=>{
         console.log('status: '+res.data.status);
         console.log('hash code: '+res.data.doc.hash);

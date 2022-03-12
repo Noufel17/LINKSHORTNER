@@ -23,6 +23,7 @@ router.post('/',(req,res)=> {
     console.log('body: '+req.body);
     if(req.body.url){
         urlData=req.body.url;
+        // here we have to get the username from front end too to save it with URL
         console.log('urldata: '+urlData);
     }
     // check if the url sent in the request (simulates the URLs submitted in front end) exists in the database

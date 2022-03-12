@@ -35,6 +35,14 @@ app.use('/API/getData',getData);
 const signup=require('./Routes/API/signup');
 app.use('/API/signup',signup);
 
+const signin=require('./Routes/API/signin');
+app.use('/API/signin',signin);
+
+const deletion=require('./Routes/API/deletion');
+app.use('/API/deletion',deletion);
+
+
+
 // redirection function after getting the shortened URL
 app.get('/:hash',(req,res)=>{
     const id=req.params.hash;
