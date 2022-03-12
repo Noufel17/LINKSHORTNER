@@ -6,7 +6,7 @@ const uniqid=require('uniqid');
 const URL=require('../../models/URLs');
 
 //Router
-// access permission
+// access permission from frontend headersr and origin 
 router.use((req,res,next) => {
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
@@ -47,6 +47,7 @@ router.post('/',(req,res)=> {
                 if(err){
                     return console.error(err);
                 }
+                console.log('URL added te db')
                 res.send({
                     doc:link,
                     status: 200,
