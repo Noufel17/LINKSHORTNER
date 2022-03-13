@@ -23,12 +23,14 @@ router.post('/',(req,res)=> {
     console.log('body: '+req.body);
     if(req.body.url){
         urlData=req.body.url;
+        _username=req.body.username;
         // here we have to get the username from front end too to save it with URL
         console.log('urldata: '+urlData);
+        console.log('username: '+_username);
     }
     // check if the url sent in the request (simulates the URLs submitted in front end) exists in the database
     // we have to filter also by urlOwner
-    URL.findOne({URL : urlData},(err,doc)=>{ 
+    URL.findOne({URL : urlData, urlOwner:_username},(err,doc)=>{ 
         if(doc){ // if url already exists in data base we dont all another one
             console.log(doc);
             console.log('URL already exists in DB')
@@ -43,6 +45,7 @@ router.post('/',(req,res)=> {
                 _id: uniqHash,
                 hash:uniqHash,
                 URL:urlData,
+                urlOwner:_username
             });
             link.save((err)=>{
                 if(err){

@@ -20,6 +20,7 @@ const urlSchema =new Schema({
     },
     urlOwner:{
         type:String,
+        required:true
     }
 });
 //now we export the data model (the Schema)

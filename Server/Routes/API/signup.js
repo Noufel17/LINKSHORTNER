@@ -38,7 +38,9 @@ router.post('/',(req,res)=> {
             console.log(doc);
             console.log('invalid username username already exists');
             res.send({
-                doc:doc
+                doc:doc,
+                status:300,
+                statustxt:'invalid'
             })
         }else{
             console.log('valid username');
@@ -52,7 +54,11 @@ router.post('/',(req,res)=> {
                     console.error(err);
                 }
                 console.log('account added to db')
-                res.send(account);
+                res.send({
+                    account:account,
+                    status:200,
+                    statustxt:'saved'
+                });
             })
         }
     })

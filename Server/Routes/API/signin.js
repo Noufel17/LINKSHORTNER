@@ -41,7 +41,7 @@ router.post('/',(req,res)=>{
             res.send({
                 account:doc,
                 status:200,
-                statustxt:'ok'
+                statustxt:'found'
             })
         }else{
             console.log('account not found');

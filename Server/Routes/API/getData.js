@@ -9,8 +9,12 @@ router.use((req,res,next) => {
     next();
 });
 
-router.get('/',(req,res)=>{
-    URL.find({},(err,urls)=>{
+router.get('/:username',(req,res)=>{
+    if(req.params.username){
+        _username=req.params.username;
+        console.log('username: '+_username);
+    }
+    URL.find({urlOwner:_username},(err,urls)=>{
         if(err){
             console.error(err);
             next();

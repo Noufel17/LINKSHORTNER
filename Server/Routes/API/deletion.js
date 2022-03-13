@@ -26,8 +26,12 @@ router.post('/',(req,res)=>{
         _hash=req.body.hash;
         console.log('hash deletion: '+_hash);
     }
+    if(req.body.username){
+        _username=req.body.username;
+        console.log('username deletion: '+_username);
+    }
     // find it and delete it in database
-    URL.findByIdAndDelete({_id:_hash},(err,doc)=>{
+    URL.findOneAndDelete({_id:_hash,urlOwner:_username},(err,doc)=>{
         if(doc){
             console.log('URL deleted');
             res.send({
