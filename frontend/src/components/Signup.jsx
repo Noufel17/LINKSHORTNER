@@ -39,9 +39,10 @@ function Signup() {
             })
     }
   return (
-<div className="flex h-screen justify-center content-center">
-    <div className="flex flex-wrap justify-center flex-col max-w-full w-1/4">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={submitUser}>
+<div className="grid grid-cols-2 h-screen content-center">
+    <div className="flex flex-wrap justify-center flex-col max-w-full h-screen my-auto">
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto
+                 w-7/12" onSubmit={submitUser}>
             <h1 className='text-black-700 text-xl font-bold mr-5 text-center'>sign up</h1>
             <div className="mb-4">
                 <label htmlFor="username"  className="block text-gray-700 text-sm font-bold mb-2">
@@ -68,6 +69,9 @@ function Signup() {
                 className="hover:text-teal-500 hover:underline">sign in</Link> </p>
             </div>
         </form>
+    </div>
+    <div className="bg-teal-500 flex">
+            <img src="/img/logow.png" className='my-auto mx-auto' alt="logo" />
     </div>
 </div>
     

@@ -1,6 +1,11 @@
-☐ delete URL functionality
+✔ delete URL functionality @done (13/03/2022, 23:58:57)
+☐ make deletion with delete request
 ☐ add loged in as username in header in homepage
 ☐ add logout bottun with loged in as
 ☐ add logo in header in homepage
 ✔ link sign in and sign up @done (13/03/2022, 22:22:57)
-☐ fix homepage design (table for links, make shortened URLs clickable) 
+☐ fix homepage design (table for links) 
+☐ apply the new design idea (logo and bg color) on sign in and sign up pages one right and one left
+    using grid in tailwind css
+✔ make links clickable @done (13/03/2022, 23:58:45)
+☐ deploy the app

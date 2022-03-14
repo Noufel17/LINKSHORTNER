@@ -9,7 +9,6 @@ function Signin() {
     //define states
     const [username, setusername] = useState('');
     const [password, setpassword] = useState('');
-
     const navigate = useNavigate();
 
     const getUsername=((event)=>{
@@ -40,15 +39,19 @@ function Signin() {
             })
     }
   return (
-    <div className="flex h-screen justify-center content-center">
-        <div className="flex flex-wrap justify-center flex-col max-w-full w-1/4">
-            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={submitUser}>
+    <div className="grid grid-cols-2 h-screen justify-center content-center">
+        <div className="bg-teal-500 flex">
+            <img src="/img/logow.png" className='my-auto mx-auto' alt="logo" />
+        </div>
+        <div className="flex flex-wrap justify-center items-center flex-col max-w-full h-screen my-auto">
+            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-7/12" 
+            onSubmit={submitUser}>
                 <h1 className='text-black-700 text-xl font-bold mr-5 text-center'>sign in</h1>
                 <div className="mb-4">
                     <label htmlFor="username"  className="block text-gray-700 text-sm font-bold mb-2">
                         username
                     </label>
-                    <input type="text" placeholder='username' className="shadow appearance-none border rounded w-full py-3 px-3
+                    <input type="text" autoFocus placeholder='username' className="shadow appearance-none border rounded w-full py-3 px-3
                     text-gray-700 leading-tight focus:outline-none 
                     focus:shadow-outline" onChange={getUsername} />
                 </div>

@@ -7,7 +7,7 @@ function App() {
 
     <Router>
       <Routes>
-       <Route path="/" element={<Signup />} />
+       <Route path="/" element={<Signin />} />
        <Route path="/URLform/:username" exact element={<URLform/>}/>
        <Route path="/Signin" exact element={<Signin/>}/>
        <Route path="/Signup" exact element={<Signup/>}/>
