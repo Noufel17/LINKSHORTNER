@@ -117,32 +117,39 @@ function URLform() {
         <h1 className="text-black-700 text-2xl font-bold w-1/2 mx-auto flex justify-center">
           links you have already :
         </h1>
-        <div
+        <table
           name="links list container"
-          className="mt-2 container content-center"
+          className="mt-2 shadow-lg bg-white border-separate table-fixed w-2/3 mx-auto content-center"
         >
+          <tr>
+            <th className="bg-blue-100 border text-left px-8 py-4
+            text-black-700 text-xl font-bold mr-2 mb-3">URL</th>
+            <th className="bg-blue-100 border text-left px-8 py-4
+            text-black-700 text-xl font-bold mr-2 mb-3">Shortened</th>
+            <th className="bg-blue-100 border text-left px-8 py-4
+            text-black-700 text-xl font-bold mr-2 mb-3">Delete</th>
+          </tr>
           {links.map((link) => {
             return (
-              <div className="flex justify-between w-2/3 mx-auto" key={link._id}>
-                <div className="w-fit">
-                  <span className="text-black-700 text-xl font-bold mr-2 mb-3">URL:</span>
-                  {link.URL}
-                </div>
-                <div className="w-fit">
-                  <span className="text-black-700 text-xl font-bold mr-2 mb-3">
-                    shortened: </span>
-                  <a className="hover:text-teal-500 hover:underline" href={"http://localhost:5000/" + link.hash}>
+              <tr key={link._id}>
+                <td className="border px-8 py-4">
+                  <p className="break-words mx-auto">{link.URL}</p>
+                </td>
+                <td className="border px-8 py-4">
+                  <a className="hover:text-teal-500 hover:underline mx-auto" href={"http://localhost:5000/" + link.hash}>
                     {"http://localhost:5000/" + link.hash}</a>
-                </div>
+                </td>
+                <td className="border px-8 py-4">
                 <button className="flex-shrink-0 bg-red-500 hover:bg-red-700
                  border-red-500 hover:border-red-700 text-sm border-4
-                  text-white py-1 px-2 rounded mb-3" onClick={(e)=>handleDelete(e,link)}>
+                  text-white py-1 px-2 rounded mb-3 mx-auto" onClick={(e)=>handleDelete(e,link)}>
                     delete
                 </button>
-              </div>
+                </td>
+              </tr>
             );
           })}
-        </div>
+        </table>
       </div>
     </div>
   );
