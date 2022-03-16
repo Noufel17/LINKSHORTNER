@@ -39,12 +39,13 @@ function Signin() {
             })
     }
   return (
-    <div className="grid grid-cols-2 h-screen justify-center content-center">
-        <div className="bg-teal-500 flex">
+    <div className="grid grid-cols-2 h-screen justify-center content-center ">
+        <div className="flex flex-col bg-teal-500 ">
             <img src="/img/logow.png" className='my-auto mx-auto' alt="logo" />
         </div>
-        <div className="flex flex-wrap justify-center items-center flex-col max-w-full h-screen my-auto">
-            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-7/12" 
+        <div className="flex flex-wrap justify-center items-center flex-col max-w-full h-screen my-auto
+            ">
+            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/2" 
             onSubmit={submitUser}>
                 <h1 className='text-black-700 text-xl font-bold mr-5 text-center'>sign in</h1>
                 <div className="mb-4">

@@ -42,7 +42,7 @@ function Signup() {
 <div className="grid grid-cols-2 h-screen content-center">
     <div className="flex flex-wrap justify-center flex-col max-w-full h-screen my-auto">
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto
-                 w-7/12" onSubmit={submitUser}>
+                 w-1/2" onSubmit={submitUser}>
             <h1 className='text-black-700 text-xl font-bold mr-5 text-center'>sign up</h1>
             <div className="mb-4">
                 <label htmlFor="username"  className="block text-gray-700 text-sm font-bold mb-2">

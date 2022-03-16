@@ -2,10 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import validator from "validator";
 import axios from "axios";
-import {useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 
 function URLform() {
   //state hooks
+  const navigate=useNavigate();
   const [url, seturl] = useState("");
   const [links, setlinks] = useState([]);
   const { username } = useParams();
@@ -77,17 +78,32 @@ function URLform() {
       console.error(err);
     })
   })
+  const signout=((e)=>{
+    e.preventDefault();
+    navigate("/Signin");
+  })
 
   return (
-    <div className="flex h-screen justify-center content-center">
-      {/* <header className="w-full ">
-        <div className="w-auto">
-          <img src="../../img/Short.n Logo/logo.png" alt="logo" />
-        </div>
-      </header> */}
-      <div className="w-screen flex-wrap flex flex-col justify-evenly container">
+    <div className="grid grid-cols-1 grid-row-3 
+      grid-flow-row gap-4 h-screen justify-center content-center px-32">
+        <header className="w-full flex justify-between items-center ">
+          <img src="/img/logo.png"  className="w-256 h-32" alt="logo" />
+          <div>
+          <p className="text-left py-4 inline-block mr-6
+            text-black-500 text-xl font-bold">signed in as <span className="text-left  py-4
+            text-black-700 text-xl font-bold"> {username}</span></p>
+          <button className="flex-shrink-0 bg-white hover:bg-gray-700 inline-block
+                 border-gray-900 border-2 text-gray-900 hover:border-gray-600 text-sm
+                  hover:text-white py-1 px-2 rounded" onClick={signout}>
+                    signout
+
+          </button>
+          </div>
+          
+        </header>
+      
         <form
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-2 w-1/2 mx-auto "
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-1/2 mx-auto "
           onSubmit={handleSubmit}
         >
           <div className="flex justify-center items-center border-b border-teal-500 py-2 ">
@@ -103,7 +119,7 @@ function URLform() {
               autoFocus
               className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3
                py-1 px-2 leading-tight focus:outline-none"
-              placeholder="enter a valid URL"
+              placeholder="enter a valid URL with the protocol included"
               onChange={handleChange}
             ></input>
             <button
@@ -114,43 +130,42 @@ function URLform() {
             </button>
           </div>
         </form>
-        <h1 className="text-black-700 text-2xl font-bold w-1/2 mx-auto flex justify-center">
-          links you have already :
-        </h1>
         <table
-          name="links list container"
-          className="mt-2 shadow-lg bg-white border-separate table-fixed w-2/3 mx-auto content-center"
+          className="shadow-lg bg-white border-separate table-fixed w-full mx-auto"
         >
-          <tr>
+          <thead>
+            <tr>
             <th className="bg-blue-100 border text-left px-8 py-4
             text-black-700 text-xl font-bold mr-2 mb-3">URL</th>
             <th className="bg-blue-100 border text-left px-8 py-4
             text-black-700 text-xl font-bold mr-2 mb-3">Shortened</th>
-            <th className="bg-blue-100 border text-left px-8 py-4
-            text-black-700 text-xl font-bold mr-2 mb-3">Delete</th>
-          </tr>
+            <th className="bg-blue-100 ">Delete</th>
+            </tr>
+          </thead>
           {links.map((link) => {
             return (
-              <tr key={link._id}>
+              <tbody key={link._id}>
+                <tr>
                 <td className="border px-8 py-4">
                   <p className="break-words mx-auto">{link.URL}</p>
                 </td>
                 <td className="border px-8 py-4">
-                  <a className="hover:text-teal-500 hover:underline mx-auto" href={"http://localhost:5000/" + link.hash}>
+                  <a className="hover:text-teal-500 hover:underline break-words mx-auto" href={"http://localhost:5000/" + link.hash}>
                     {"http://localhost:5000/" + link.hash}</a>
                 </td>
-                <td className="border px-8 py-4">
+                <td className="border px-8 py-4 flex justify-center">
                 <button className="flex-shrink-0 bg-red-500 hover:bg-red-700
                  border-red-500 hover:border-red-700 text-sm border-4
-                  text-white py-1 px-2 rounded mb-3 mx-auto" onClick={(e)=>handleDelete(e,link)}>
-                    delete
+                  text-white py-1 px-2 rounded" onClick={(e)=>handleDelete(e,link)}>
+                    delete URL
                 </button>
                 </td>
-              </tr>
+                </tr>
+              </tbody>
             );
           })}
         </table>
-      </div>
+      
     </div>
   );
 }
