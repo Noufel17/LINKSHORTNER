@@ -9,14 +9,19 @@ function Signin() {
     //define states
     const [username, setusername] = useState('');
     const [password, setpassword] = useState('');
+    const [invalid, setinvalid] = useState('');
     const navigate = useNavigate();
 
     const getUsername=((event)=>{
         event.preventDefault();
+        const elem=document.getElementById('invalid');
+            elem.classList.add('hidden');
         setusername(event.target.value);
     })
     const getPassword=((event)=>{
         event.preventDefault();
+        const elem=document.getElementById('invalid');
+            elem.classList.add('hidden');
         setpassword(event.target.value);
     })
     const submitUser=(event)=>{
@@ -30,8 +35,9 @@ function Signin() {
                     navigate("/URLform/"+username);// pass the state username in the rout URL to the form
                 }else if(res.data.status===300 && res.data.statustxt==='not found'){
                     console.log('invalid username or password');
-                    // add a div or an alert to display invalid username or password
-                    alert('invalid username or password');
+                    setinvalid('invalid username or password');
+                    const elem=document.getElementById('invalid');
+                    elem.classList.remove('hidden');
                 }
             })
             .catch(err=>{
@@ -53,8 +59,8 @@ function Signin() {
                         username
                     </label>
                     <input type="text" autoFocus placeholder='username' className="shadow appearance-none border rounded w-full py-3 px-3
-                    text-gray-700 leading-tight focus:outline-none 
-                    focus:shadow-outline" onChange={getUsername} />
+                    text-gray-700 leading-tight focus:outline-none focus:border-teal-500
+                    focus:shadow-outline" required onChange={getUsername} />
                 </div>
                 <div className="mb-10">
                     <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
@@ -62,7 +68,8 @@ function Signin() {
                     </label>
                     <input type="password" placeholder='password' className="shadow appearance-none border
                     rounded w-full py-3 px-3 text-gray-700 leading-tight 
-                    focus:outline-none focus:shadow-outline" onChange={getPassword}/>
+                    focus:outline-none focus:border-teal-500" required onChange={getPassword}/>
+                    <p id="invalid" className='text-red-500 hidden mt-2 '>{invalid}</p>
                 </div>
                 <div className="flex justify-between mb-5">
                     <button className=" py-2 px-3 rounded bg-teal-500 hover:bg-teal-700 

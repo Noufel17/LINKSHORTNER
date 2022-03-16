@@ -30,8 +30,6 @@ function Signup() {
                     navigate("/Signin");
                 }else if(res.data.status===300 && res.data.statustxt==='invalid'){
                     console.log('invalid username or password');
-                    // add a div or an alert to display invalid username or password
-                    alert('invalid username or password');
                 }
             })
             .catch(err=>{
@@ -49,15 +47,16 @@ function Signup() {
                     username
                 </label>
                 <input type="text" placeholder='username' className="shadow appearance-none border rounded w-full py-3 px-3
-                 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 text-gray-700 leading-tight focus:outline-none focus:border-teal-500"
                   onChange={getUsername} />
+                  
             </div>
             <div className="mb-10">
             <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
                     password
                 </label>
                 <input type="password" placeholder='password' className="shadow appearance-none border rounded w-full py-3 px-3
-                text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                text-gray-700 leading-tight focus:outline-none focus:border-teal-500"
                 onChange={getPassword}/>
             </div>
             <div className="flex justify-between mb-5">
