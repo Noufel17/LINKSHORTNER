@@ -37,39 +37,40 @@ function Signup() {
             })
     }
   return (
-<div className="grid grid-cols-2 h-screen content-center">
-    <div className="flex flex-wrap justify-center flex-col max-w-full h-screen my-auto">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto
-                 w-1/2" onSubmit={submitUser}>
-            <h1 className='text-black-700 text-xl font-bold mr-5 text-center'>sign up</h1>
+<div className="block xl:grid xl:grid-cols-2 h-screen xl:justify-center content-center">
+    <div className=" flex flex-wrap justify-center items-center flex-col max-w-full h-screen my-auto">
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-10/12  sm:w-7/12 lg:w-1/3 xl:w-1/2" onSubmit={submitUser}>
+            <h1 className='text-black-700 text-lg sm:text-xl font-bold mr-5 text-center'>sign up</h1>
             <div className="mb-4">
                 <label htmlFor="username"  className="block text-gray-700 text-sm font-bold mb-2">
                     username
                 </label>
                 <input type="text" placeholder='username' className="shadow appearance-none border rounded w-full py-3 px-3
-                 text-gray-700 leading-tight focus:outline-none focus:border-teal-500"
+                    text-gray-700 leading-tight focus:outline-none focus:border-teal-500
+                    focus:shadow-outline"
                   onChange={getUsername} />
                   
             </div>
             <div className="mb-10">
-            <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
+            <label htmlFor="password" className="block text-gray-700 text-xs sm:text-sm font-bold mb-2">
                     password
                 </label>
-                <input type="password" placeholder='password' className="shadow appearance-none border rounded w-full py-3 px-3
-                text-gray-700 leading-tight focus:outline-none focus:border-teal-500"
+                <input type="password" placeholder='password' className="shadow appearance-none border
+                    rounded w-full py-3 px-3 text-gray-700 leading-tight 
+                    focus:outline-none focus:border-teal-500"
                 onChange={getPassword}/>
             </div>
-            <div className="flex justify-between mb-5">
-                <button type='submit' className=" py-2 px-3 rounded bg-teal-500 hover:bg-teal-700
-                 border-teal-500 hover:border-teal-700 text-sm border-4 text-white">
+            <div className="flex justify-between mb-5 items-center">
+                <button type='submit' className=" py-1 px-0.5 sm:py-2 sm:px-3 rounded bg-teal-500 hover:bg-teal-700 
+                    border-teal-500 hover:border-teal-700 text-xs sm:text-sm border-4 text-white">
                     sign up
                 </button>
-                <p>have an account? <Link to={"/Signin"}
-                className="hover:text-teal-500 hover:underline">sign in</Link> </p>
+                <p className='text-xs sm:text-sm'>have an account? <Link to={"/Signin"}
+                className="hover:text-teal-500 hover:underline text-xs sm:text-sm">sign in</Link> </p>
             </div>
         </form>
     </div>
-    <div className="bg-teal-500 flex">
+    <div className=" hidden xl:flex xl:flex-col bg-teal-500">
             <img src="/img/logow.png" className='my-auto mx-auto' alt="logo" />
     </div>
 </div>
